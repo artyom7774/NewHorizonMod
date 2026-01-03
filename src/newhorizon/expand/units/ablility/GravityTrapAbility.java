@@ -22,7 +22,7 @@ public class GravityTrapAbility extends Ability {
 
     @Override
     public void update(Unit unit) {
-        field.update(unit);
+        // field.update(unit);
     }
 
     @Override
