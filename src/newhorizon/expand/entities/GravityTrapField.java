@@ -8,68 +8,51 @@ import mindustry.gen.Teamc;
 import newhorizon.NHGroups;
 
 public class GravityTrapField implements Position, QuadTree.QuadTreeObject {
-    public float scale;
-    public Rect rect;
+    public float x, y, range;
+    public boolean active;
     public Team owner;
 
-    public GravityTrapField(Teamc entity, float scale, float radius) {
-        rect = new Rect();
-        update(entity, scale, radius);
+    public GravityTrapField(Team owner, float range) {
+        this.range = range;
+        this.owner = owner;
         add();
-    }
-
-    public GravityTrapField(Teamc entity, float radius) {
-        rect = new Rect();
-        update(entity, 1f, radius);
-        add();
-    }
-
-    public void update(Teamc entity, float scale, float radius) {
-        rect.setCentered(entity.getX(), entity.getY(), radius * 2f);
-        owner = entity.team();
-        this.scale = scale;
     }
 
     public void update(Teamc entity) {
-        rect.setCenter(entity.getX(), entity.getY());
+        x = entity.x();
+        y = entity.y();
         owner = entity.team();
     }
 
-    public boolean isActive(boolean active) {
-        return scale > 0.1f;
-    }
-
-    public float getGravityTrap(){
-        return scale * rect.area();
+    public void active(boolean active) {
+        this.active = active;
     }
 
     public void add() {
-        NHGroups.gravityFields.insert(this);
-        NHGroups.gravityFieldSeq.add(this);
+        NHGroups.gravityTraps.insert(this);
     }
 
     public void remove() {
-        NHGroups.gravityFields.remove(this);
-        NHGroups.gravityFieldSeq.remove(this);
+        NHGroups.gravityTraps.remove(this);
     }
 
     @Override
     public float getX() {
-        return rect.getX();
+        return x;
     }
 
     @Override
     public float getY() {
-        return rect.getY();
+        return y;
     }
 
     @Override
     public void hitbox(Rect out) {
-        out.set(rect);
+        out.setSize(range * 2).setCenter(x, y);
     }
 
     @Override
     public String toString() {
-        return "GravityTrapField{" + "pos(" + getX() + ", " + getY() + ")}";
+        return "GravityTrapField{" + "pos(" + x + ", " + y + ")}";
     }
 }

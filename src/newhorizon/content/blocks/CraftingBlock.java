@@ -276,12 +276,12 @@ public class CraftingBlock {
                         y = 4;
                     }}
             );
-        }};
+        }};     
         zetaFactory = new RecipeGenericCrafter("zeta-factory") {{
             requirements(Category.crafting, ItemStack.with(
                     NHItems.hardLight, 50,
-                    NHItems.tungsten, 100,
-                    NHItems.carbide, 50,
+                    NHItems.tungsten, 100, 
+                    NHItems.carbide, 50, 
                     NHItems.metalOxhydrigen, 50
             ));
 
@@ -298,7 +298,7 @@ public class CraftingBlock {
 
             craftEffect = Fx.formsmoke;
             updateEffect = NHFx.trailToGray;
-
+            
             drawer = new DrawMulti(
                     new DrawRegionRotated() {{
                         oneSprite = true;
@@ -496,7 +496,7 @@ public class CraftingBlock {
             craftTime = 120f;
             itemCapacity = 20;
             health = 1500;
-            armor = 10;
+            armor = 10;       
 
             consumePower(240f / 60f);
             outputItems = with(NHItems.seniorProcessor, 2);
@@ -863,7 +863,7 @@ public class CraftingBlock {
 
             consumePower(300f / 60f);
         }};
-
+        
         factory1 = new RecipeGenericCrafter("factory-1"){{
             requirements(Category.crafting, BuildVisibility.shown, ItemStack.with(
                     NHItems.presstanium, 10,
