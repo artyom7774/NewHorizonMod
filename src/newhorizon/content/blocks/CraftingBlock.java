@@ -142,7 +142,6 @@ public class CraftingBlock {
             craftEffect = NHFx.square(Pal.techBlue, 60, 6, 16, 3);
             updateEffect = NHFx.square(Pal.techBlue, 60, 2, 12, 3);
         }};
-        /*
         sheetPresser = new GenericCrafter("sheet-presser"){{
             requirements(Category.crafting, ItemStack.with(
                     NHItems.titanium, 45,
@@ -940,8 +939,6 @@ public class CraftingBlock {
             liquidCapacity = 40f;
             consumePower(1600 / 60f);
         }};
-
-         */
     }
 
     public static void loadColors(){
